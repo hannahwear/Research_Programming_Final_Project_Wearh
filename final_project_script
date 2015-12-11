@@ -9,31 +9,34 @@ from skimage import io
 from skimage.feature import blob_dog
 from skimage.color import rgb2gray
 import math
+import numpy as np
 
 
 #Image of germ cell nests in ovary
 dat = io.imread('germ_cell_nest.jpg')
 dat = rgb2gray(dat)
 
-blobs = blob_dog(dat, max_sigma=12, threshold=.25)
-blobs[:, 2] = blobs[:, 2] * (2 ** 0.5)
+blobs1 = blob_dog(dat, max_sigma=12, threshold=.25)
+blobs1[:, 2] = blobs1[:, 2] * (2 ** 0.5)
 
 io.imshow(dat)
-for blob in blobs:
+for blob in blobs1:
     y, x, r = blob
     c = plt.Circle((x, y), r, color='b', linewidth=2, fill=False)
     plt.gca().add_patch(c)
 plt.show()
 
-print (blobs)
+print (blobs1[:,2].size)
+
+r = (blobs1[:,2])
+print (r)
 
 
-#Determine area of each cell based on radius determined in print(blob)
 def area_of_circle(r):
     """Function that defines an area of a circle"""
     area = r**2 * math.pi
     return area
-    r = blobs[:,2]
+    
 print (area_of_circle(r))
 #-----------------------------------------------------------
 
@@ -42,17 +45,28 @@ print (area_of_circle(r))
 dat = io.imread('germ_nest_breakdown.gif')
 dat = rgb2gray(dat)
 
-blobs = blob_dog(dat, max_sigma=15, threshold=.15)
-blobs[:, 2] = blobs[:, 2] * (2 ** 0.5)
+blobs2 = blob_dog(dat, max_sigma=15, threshold=.15)
+blobs2[:, 2] = blobs2[:, 2] * (2 ** 0.5)
 
 io.imshow(dat)
-for blob in blobs:
+for blob in blobs2:
     y, x, r = blob
     c = plt.Circle((x, y), r, color='g', linewidth=2, fill=False)
     plt.gca().add_patch(c)
 plt.show()
 
-print (blobs)
+print (blobs2[:,2].size)
+
+r = (blobs2[:,2])
+print (r)
+
+
+def area_of_circle(r):
+    """Function that defines an area of a circle"""
+    area = r**2 * math.pi
+    return area
+    
+print (area_of_circle(r))
 #-----------------------------------------------------------
 
 
@@ -63,22 +77,26 @@ io.imshow(image)
 dat = rgb2gray(image)
 io.imshow(dat)
 
-blobs = blob_dog(dat, max_sigma=7, threshold=.27)
-blobs[:, 2] = blobs[:, 2] * (2 ** 0.5)
+blobs3 = blob_dog(dat, max_sigma=7, threshold=.27)
+blobs3[:, 2] = blobs3[:, 2] * (2 ** 0.5)
 
 io.imshow(dat)
-for blob in blobs:
+for blob in blobs3:
     y, x, r = blob
     c = plt.Circle((x, y), r, color='g', linewidth=2, fill=False)
     plt.gca().add_patch(c)
 plt.show()
 
-print (blobs)
+print (blobs3[:,2].size)
+
+r = (blobs3[:,2])
+print (r)
+
 
 def area_of_circle(r):
     """Function that defines an area of a circle"""
     area = r**2 * math.pi
     return area
-    r = blobs[:,2]
+    
 print (area_of_circle(r))
 
