@@ -10,7 +10,7 @@ from skimage.feature import blob_dog
 from skimage.color import rgb2gray
 
 
-
+#Image of germ cell nests in ovary
 dat = io.imread('germ_cell_nest.jpg')
 dat = rgb2gray(dat)
 
@@ -20,11 +20,14 @@ blobs[:, 2] = blobs[:, 2] * (2 ** 0.5)
 io.imshow(dat)
 for blob in blobs:
     y, x, r = blob
-    c = plt.Circle((x, y), r, color='r', linewidth=2, fill=False)
+    c = plt.Circle((x, y), r, color='b', linewidth=2, fill=False)
     plt.gca().add_patch(c)
 plt.show()
 
+print (blobs)
 
+
+#Image of germ cell nest breakdown
 dat = io.imread('germ_nest_breakdown.gif')
 dat = rgb2gray(dat)
 
@@ -34,6 +37,18 @@ blobs[:, 2] = blobs[:, 2] * (2 ** 0.5)
 io.imshow(dat)
 for blob in blobs:
     y, x, r = blob
-    c = plt.Circle((x, y), r, color='r', linewidth=2, fill=False)
+    c = plt.Circle((x, y), r, color='g', linewidth=2, fill=False)
     plt.gca().add_patch(c)
 plt.show()
+
+print (blobs)
+
+#Determine area of each cell based on radius determined in print(blob)
+import math
+
+def area_of_circle(r):
+    """Function that defines an area of a circle"""
+    area = r**2 * math.pi
+    return area
+    r = blobs[:,0]
+print (area_of_circle(r))
