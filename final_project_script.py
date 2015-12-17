@@ -36,20 +36,20 @@ def doit(filename):
     r = (blobs[:,2])
     print (r)
     print (area_of_circle(r))
-    avg_r = np.mean(area_of_circle(r))
-    print (avg_r)
+    avg_area = np.mean(area_of_circle(r))
+    print (avg_area)
     
     #Distance from average x 
     avg_x = np.mean(blobs[:,0])
     x = (blobs[:,0])
-    avg_x_dist = (x-avg_x)
-    print (avg_x_dist)
+    x_dist = (x-avg_x)
+    print (x_dist)
     
     #Distance from average y
     avg_y = np.mean(blobs[:,1])
     y = (blobs[:,1])
-    avg_y_dist = (y-avg_y)
-    print (avg_y_dist)
+    y_dist = (y-avg_y)
+    print (y_dist)
     
     return blobs # for potential further processing
     
